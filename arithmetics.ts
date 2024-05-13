@@ -29,3 +29,5 @@ type Fib<N extends Num> = N extends _0
 	: N extends _1
 	  ? N
 	  : Add<Fib<Pred<N>>, Fib<Sub<N, _2>>>;
+
+type Result = Add<_2, _2>;
