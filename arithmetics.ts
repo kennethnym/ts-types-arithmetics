@@ -30,4 +30,22 @@ type Fib<N extends Num> = N extends _0
 	  ? N
 	  : Add<Fib<Pred<N>>, Fib<Sub<N, _2>>>;
 
+type Factorial<N extends Num> = N extends _0
+    ? _1
+    : Multiply<N, Factorial<Pred<N>>>
+
+type Modulo<A extends Num, B extends Num> = B extends _0
+    ? _0
+    : ModHelper<Sub<A,B>, B>
+
+type ModHelper<A extends Num, B extends Num> = Sub<A,B> extends _0 
+    ? A extends B
+      ? Modulo<A, B>
+      : A
+    : Modulo<A, B>
+
+type IsEven<N extends Num> = Modulo<N,_2> extends _0
+    ? true
+    : false
+
 type Result = Add<_2, _2>;
